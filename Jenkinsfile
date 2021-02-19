@@ -22,14 +22,14 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t kammana/hariapp:${DOCKER_TAG} "
+                sh "docker build . -t anilkumblepuli/hariapp:${DOCKER_TAG} "
             }
         }
         
         stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u kammana -p ${dockerHubPwd}"
+                   withCredentials([string(credentialsId: 'docker-hub', variable: 'docker-hub')]) {
+                    sh "docker login -u anilkumblepuli -p ${docker-hub}"
                 }
                 
                 sh "docker push kammana/hariapp:${DOCKER_TAG} "
