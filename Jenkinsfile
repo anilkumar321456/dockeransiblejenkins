@@ -32,7 +32,7 @@ pipeline{
                       withCredentials([string(credentialsId: 'docker-hub123', variable: 'docker--tube')]) 
                       {
                         sh "docker login -u anilkumblepuli -p ${docker--tube}"
-                        sh "docker push kammana/hariapp:${DOCKER_TAG} "
+                        sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
                      }
               }
           }
