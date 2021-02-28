@@ -28,16 +28,16 @@ pipeline{
         
         stage('DockerHub Push')
           {
-            steps{ 
+            steps { 
                       withCredentials([string(credentialsId: 'docker-hub123', variable: 'docker--tube')]) 
                       {
                         sh "docker login -u anilkumblepuli -p ${docker--tube}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
                      }
-              }
-          }
+               }
+           }
          }
-        }
+        
         
         stage('Docker Deploy'){
             steps{
