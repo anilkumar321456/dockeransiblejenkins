@@ -36,9 +36,7 @@ pipeline{
                      }
                }
            }
-         }
-        
-        
+          
         stage('Docker Deploy')
           {
             steps{
