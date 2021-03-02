@@ -25,7 +25,7 @@ pipeline{
                 sh "docker build . -t anilkumblepuli/hariapp:${DOCKER_TAG} "
             }
         }
-        
+    }
         stage('DockerHub Push')
           {
             steps { 
