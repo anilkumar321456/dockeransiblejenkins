@@ -35,6 +35,7 @@ pipeline{
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
                      }
                }
+          }
            }
           
         stage('Docker Deploy')
@@ -50,3 +51,4 @@ def getVersion(){
     return commitHash
 }
 
+}
