@@ -24,7 +24,6 @@ pipeline{
                 sh "docker build . -t anilkumblepuli/hariapp:${DOCKER_TAG} "
             }
         }
-    }
         stage('DockerHub Push'){
             steps { 
                       withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'hello-pwd')]) 
