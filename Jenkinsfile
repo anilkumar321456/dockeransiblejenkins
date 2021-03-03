@@ -29,14 +29,14 @@ pipeline{
         stage('DockerHub Push')
           {
             steps { 
-                    withCredentials([string(credentialsId: 'docker-hub123', variable: 'new--pwd')]) 
+                      withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'hello-pwd')]) 
                       {
-                        sh "docker login -u anilkumblepuli -p ${new--pwd}"
+                        sh "docker login -u anilkumblepuli -p ${hello-pwd}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
                      }
                }
           }
-           }
+           
           
         stage('Docker Deploy')
           {
