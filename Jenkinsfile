@@ -2,7 +2,7 @@ pipeline{
     agent {label 'nani1'}
     tools {
       maven 'maven'
-    }
+       }
     environment {
       DOCKER_TAG = getVersion()
     }
@@ -32,10 +32,10 @@ pipeline{
           {
             steps { 
                       withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'hello-pwd')]) 
-                      {
+                       {
                         sh "docker login -u anilkumblepuli -p ${hello-pwd}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
-                  }
+                    }
                }
           }     
         stage('Docker Deploy')
