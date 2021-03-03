@@ -7,20 +7,22 @@ pipeline{
       DOCKER_TAG = getVersion()
     }
     stages{
-        stage('SCM'){
+        stage('SCM')
+        {
             steps{
                 git credentialsId: 'github', 
                     url: 'https://github.com/javahometech/dockeransiblejenkins'
             }
-        }
-        
-        stage('Maven Build'){
+        }  
+        stage('Maven Build')
+        {
             steps{
                 sh "mvn clean package"
             }
         }
         
-        stage('Docker Build'){
+        stage('Docker Build')
+        {
             steps{
                 sh "docker build . -t anilkumblepuli/hariapp:${DOCKER_TAG} "
             }
