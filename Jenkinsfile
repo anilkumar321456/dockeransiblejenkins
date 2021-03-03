@@ -29,11 +29,10 @@ pipeline{
                    withCredentials([string(credentialsId: 'docker-hub321123', variable: 'hello-pwd1')]) 
                      {           
                         sh "docker login -u anilkumblepuli -p ${hello-pwd1}"
-                        sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
+                        sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG}"
                     }
                }
           }
-    }
         stage('Docker Deploy'){
             steps{
             ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: 'DOCKER_TAG', inventory: 'dev.inv', playbook: 'deploy-docker.yml' 
