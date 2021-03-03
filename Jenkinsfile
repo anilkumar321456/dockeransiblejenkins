@@ -35,11 +35,9 @@ pipeline{
                       {
                         sh "docker login -u anilkumblepuli -p ${hello-pwd}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
-                     }
+                  }
                }
-          }
-           
-          
+          }     
         stage('Docker Deploy')
           {
             steps{
