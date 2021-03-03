@@ -26,7 +26,7 @@ pipeline{
         }
         stage('DockerHub Push'){
             steps { 
-                    withCredentials([string(credentialsId: 'docker-hub321123', variable: 'hello-pwd1')]) 
+                   withCredentials([string(credentialsId: 'docker-hub321123', variable: 'hello-pwd1')]) 
                    {           
                         sh "docker login -u anilkumblepuli -p ${hello-pwd1}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG} "
@@ -35,10 +35,9 @@ pipeline{
           }     
         stage('Docker Deploy'){
             steps{
-           ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: 'DOCKER_TAG', inventory: 'dev.inv', playbook: 'deploy-docker.yml' 
+            ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: 'DOCKER_TAG', inventory: 'dev.inv', playbook: 'deploy-docker.yml' 
             }
         }
-    }
 }
 def getVersion(){
     def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
