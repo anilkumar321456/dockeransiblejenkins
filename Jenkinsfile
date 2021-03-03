@@ -45,6 +45,6 @@ def getVersion(){
     def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
     return commitHash
 }
-}
+
 
 
