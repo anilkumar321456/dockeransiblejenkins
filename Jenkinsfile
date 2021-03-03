@@ -7,29 +7,25 @@ pipeline{
       DOCKER_TAG = getVersion()
     }
     stages{
-        stage('SCM')
-        {
+        stage('SCM'){
             steps{
                 git credentialsId: 'github', 
                     url: 'https://github.com/javahometech/dockeransiblejenkins'
             }
         }  
-        stage('Maven Build')
-        {
+        stage('Maven Build'){
             steps{
                 sh "mvn clean package"
             }
         }
         
-        stage('Docker Build')
-        {
+        stage('Docker Build'){
             steps{
                 sh "docker build . -t anilkumblepuli/hariapp:${DOCKER_TAG} "
             }
         }
     }
-        stage('DockerHub Push')
-          {
+        stage('DockerHub Push'){
             steps { 
                       withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'hello-pwd')]) 
                        {
@@ -38,8 +34,7 @@ pipeline{
                     }
                }
           }     
-        stage('Docker Deploy')
-          {
+        stage('Docker Deploy'){
             steps{
            ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: 'DOCKER_TAG', inventory: 'dev.inv', playbook: 'deploy-docker.yml' 
             }
