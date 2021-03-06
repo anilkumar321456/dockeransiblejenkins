@@ -28,7 +28,7 @@ pipeline{
             steps { 
                   withCredentials([string(credentialsId: 'docker-hubb', variable: 'dockerr-world')]) 
                      {           
-                        sh "docker login -u anilkumblepuli -p ${hello-pwd1}"
+                        sh "docker login -u anilkumblepuli -p ${dockerr-world}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG}"
                     }
                }
