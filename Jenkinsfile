@@ -28,7 +28,7 @@ pipeline{
             steps { 
                    withCredentials([string(credentialsId: 'docker--wprld', variable: 'docker--build')]) 
                      {           
-                        sh "docker login -u anilkumblepuli -p ${dockerr--build}"
+                        sh "docker login -u anilkumblepuli -p ${docker--build}"
                         sh "docker push anilkumblepuli/hariapp:${DOCKER_TAG}"
                     }
                }
