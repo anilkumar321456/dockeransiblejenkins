@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'nani1'}
+    agent {label 'webserver'}
     tools {
       maven 'maven'
        }
